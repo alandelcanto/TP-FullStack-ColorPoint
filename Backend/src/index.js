@@ -1,8 +1,7 @@
 import express from "express";
 import { publicPath } from "./utils/paths.js";
-import productosAPI from "./routes/productosAPI.js";
-import productosAdmin from "./routes/productosAdmin.js";
-
+import productosAPI from "./routes/productosAPI.route.js";
+import productosAdmin from "./routes/productosAdmin.route.js";
 
 const app = express();
 
@@ -20,5 +19,5 @@ app.use("/api/", productosAPI);
 
 // listen
 app.listen(app.get("PORT"), () => {
-    console.log(`Server running on port ${app.get("PORT")}`);
+    console.log(`Server ejecutando en puerto ${app.get("PORT")}`);
 });
