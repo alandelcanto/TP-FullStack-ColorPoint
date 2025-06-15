@@ -53,5 +53,104 @@
     "categoria": "interior",
     "marca": "Casablanca",
     "color": "Blanco"
+  },
+  {
+    "id": "P6",
+    "nombre": "Látex Interior Mate Cipress 4 Lts",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar.",
+    "precio": 32949,
+    "img": "assets\\pinturas\\verde_1.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Verde"
+  },
+  {
+    "id": "P7",
+    "nombre": "Látex Interior Mate Cipress 1 L",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar.",
+    "precio": 14400,
+    "img": "assets\\pinturas\\verde_2.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Verde"
+  },
+  {
+    "id": "P8",
+    "nombre": "Látex Interior Mate Ciboulette 4 Lts",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar.",
+    "precio": 32949,
+    "img": "assets\\pinturas\\verde_3.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Verde"
+  },
+  {
+    "id": "P9",
+    "nombre": "Látex Interior Mate Ciboulette 1 L",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar.",
+    "precio": 14400,
+    "img": "assets\\pinturas\\verde_4.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Verde"
+  },
+  {
+    "id": "P10",
+    "nombre": "Latex Interior Albalatex Design Verde Exotico 4 Lts",
+    "descripcion": "Latex para Interiores Mate Óptimo poder cubritivo Colores más intensos y puros Excelente nivelación y lavabilidad. Alto PODER ANTIHONGO",
+    "precio": 14400,
+    "img": "assets\\pinturas\\verde_5.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Verde"
+  },
+  {
+    "id": "P11",
+    "nombre": "Látex Interior Mate Arandano 4 Lts",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar. Es de fácil aplicación, proporciona un recubrimiento uniforme que seca rápidamente.",
+    "precio": 32949,
+    "img": "assets\\pinturas\\violeta_1.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Violeta"
+  },
+  {
+    "id": "P12",
+    "nombre": "Látex Interior Mate Arandano 1 L",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar. Es de fácil aplicación, proporciona un recubrimiento uniforme que seca rápidamente.",
+    "precio": 14400,
+    "img": "assets\\pinturas\\violeta_2.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Violeta"
+  },
+  {
+    "id": "P13",
+    "nombre": "Latex Interior Albalatex Design Violeta Estelar 4 Lts",
+    "descripcion": "Latex para Interiores Mate Óptimo poder cubritivo Colores más intensos y puros Excelente nivelación y lavabilidad. Alto PODER ANTIHONGO",
+    "precio": 35209,
+    "img": "assets\\pinturas\\violeta_3.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Violta"
+  },
+  {
+    "id": "P14",
+    "nombre": "Latex Interior Albalatex Design Violeta Estelar 1 L",
+    "descripcion": "Latex para Interiores Mate Óptimo poder cubritivo Colores más intensos y puros Excelente nivelación y lavabilidad. Alto PODER ANTIHONGO",
+    "precio": 9469,
+    "img": "assets\\pinturas\\violeta_4.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Violta"
   }
 ]

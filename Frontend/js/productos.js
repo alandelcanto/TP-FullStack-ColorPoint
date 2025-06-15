@@ -106,13 +106,6 @@ function init() {
   if (busquedaInput) {
     busquedaInput.addEventListener('keyup', filtrarPorTexto);
   }
-
-  document.querySelectorAll('.color').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const color = btn.classList.contains('reset') ? 'reset' : btn.style.backgroundColor;
-      filtrarPorColor(color);
-    });
-  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
