@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Navbar superior */
+.navbar-superior {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.navbar-superior .logo {
+  height: 3.2rem;
+  margin-right: 1rem;
+}
+
+.navbar-superior h1 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.buscador-navbar {
+  margin-left: auto;
+  margin-right: 1rem;
+  padding: 0.6rem 1rem;
+  font-size: 1.4rem;
+  border: 1.5px solid #ccc;
+  border-radius: 1rem;
+  width: 220px;
+  transition: all 0.3s ease;
+}
+
+.buscador-navbar:focus {
+  border-color: #0080ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 128, 255, 0.3);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 1rem;
+}
+
+.tab {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0 0.5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tab.activo {
+  background-color: #0080ff;
+  color: white;
+}
+
+/* Filtros de pintura */
+.filtros {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.filtros input {
+  padding: 0.8rem;
+  font-size: 1.4rem;
+  width: 55%;
+  max-width: 500px;
+  border: 2px solid #ccc;
+  border-radius: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* Contenedor principal con espacio para el navbar inferior */
+.contenido {
+  padding-bottom: 80px;
+}
+
+/* Lista de productos */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+/* Tarjeta de producto generada dinámicamente */
+.product-card {
+  background-color: white;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 0.8rem;
+}
+
+.product-card h3 {
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.product-card p {
+  font-size: 1.3rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.product-card button.add-to-cart {
+  padding: 0.7rem 1.2rem;
+  font-size: 1.2rem;
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.product-card button.add-to-cart:hover {
+  background-color: #005bb5;
+}
+
+@media (max-width: 600px) {
+  .buscador-navbar {
+    width: 140px;
+    font-size: 1.2rem;
+  }
+
+  .navbar-superior h1 {
+    font-size: 1.5rem;
+  }
+}

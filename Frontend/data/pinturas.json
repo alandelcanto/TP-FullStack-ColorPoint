@@ -1,0 +1,57 @@
+[
+  {
+    "id": "P1",
+    "nombre": "Latex Interior Albacryl Mate",
+    "descripcion": "El látex interior Albacryl Alba, ofrece un rendimiento profesional y una terminación uniforme y duradera. Su fórmula de alta cobertura permite pintar grandes superficies. Es ideal para todo tipo de interiores.",
+    "precio": 77220,
+    "img": "assets\\pinturas\\albacrylmate.png",
+    "stock": 15,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Blanco"
+  },
+  {
+    "id": "P2",
+    "nombre": "Latex Interior Albalatex Extra Mate",
+    "descripcion": "Pintura látex blanca para interiores ideal para lograr un acabado elegante, uniforme y profesional. Perfecta para cubrir grandes superficies como techos y paredes en ambientes residenciales, oficinas o comercios",
+    "precio": 140000,
+    "img": "assets\\pinturas\\latex-alba-blanco-20lts.png",
+    "stock": 10,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Blanco"
+  },
+  {
+    "id": "P3",
+    "nombre": "Casablanca Performance Satinado",
+    "descripcion": "Recubrimiento para superficies interiores de baja porosidad, excelente lavabilidad y alto poder cubritivo.",
+    "precio": 39089,
+    "img": "assets\\pinturas\\PERFORMANCE-INT-SAT_1.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Casablanca",
+    "color": "Blanco"
+  },
+  {
+    "id": "P4",
+    "nombre": "Látex Interior Mate",
+    "descripcion": "Látex acrílico para interiores de acabado mate, de excelente poder cubritivo, resistente a la formación de hongos y rápido secado. La utilización de pigmentos y polímeros de primera calidad.",
+    "precio": 105610,
+    "img": "assets\\pinturas\\PLLI20-01_3.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Plavicon",
+    "color": "Blanco"
+  },
+  {
+    "id": "P5",
+    "nombre": "Látex Interior Casablanca 4L",
+    "descripcion": "Recubrimiento acrílico extra cubritivo. Muy buena nivelación, recomendado para aplicar en superficies interiores de yeso, revoque, mampostería, ladrillo y cemento, entre otras.",
+    "precio": 19928,
+    "img": "assets\\pinturas\\prolatex-interior-nuevo_3.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Casablanca",
+    "color": "Blanco"
+  }
+]
