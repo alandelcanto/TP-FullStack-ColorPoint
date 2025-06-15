@@ -1,0 +1,35 @@
+[
+  {
+    "id": "H1",
+    "nombre": "Martillo de carpintero",
+    "descripcion": "Martillo con mango de fibra y cabeza de acero",
+    "precio": 3500,
+    "img": "img/herramientas/martillo.jpg",
+    "stock": 20,
+    "categoria": "manual",
+    "marca": "Stanley",
+    "material": "Acero y fibra"
+  },
+  {
+    "id": "H2",
+    "nombre": "Taladro eléctrico",
+    "descripcion": "Taladro percutor con velocidad variable 850W",
+    "precio": 18000,
+    "img": "img/herramientas/taladro.jpg",
+    "stock": 7,
+    "categoria": "eléctrico",
+    "marca": "Bosch",
+    "material": "Plástico y metal"
+  },
+  {
+    "id": "H3",
+    "nombre": "Destornillador Phillips",
+    "descripcion": "Destornillador con punta imantada y mango ergonómico",
+    "precio": 1200,
+    "img": "img/herramientas/destornillador.jpg",
+    "stock": 50,
+    "categoria": "manual",
+    "marca": "Tramontina",
+    "material": "Acero inoxidable"
+  }
+]

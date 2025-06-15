@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/favicon.png" type="image/png">
-    <link rel="stylesheet" href="css/navbar.css">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Productos</title>
-</head>
-<body>
+    <link rel="stylesheet" href="css/productos.css" />
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+  </head>
+
+  <body>
+    <!-- Navbar superior -->
+    <header class="navbar-superior">
+      <img src="assets/logo.png" class="logo" alt="Logo" />
+      <h1>Color Point</h1>
+      <input type="text" id="busquedaGlobal" class="buscador-navbar" placeholder="Buscar productos..." />
+    </header>
+
+
+    <!-- Contenido principal -->
+    <main class="contenido">
+      <div class="tabs">
+        <button class="tab activo">Pinturas</button>
+        <button class="tab">Herramientas</button>
+      </div>
+
+      <!-- Lista de productos -->
+      <section id="lista-productos" class="productos"></section>
+    </main>
+
+    <!-- Navbar inferior -->
     <div id="navbar-inferior">
-        <a href="productos.html" class="activo">PRODUCTOS</a>
-        <a href="carrito.html">CARRITO</a>
-        <a href="ticket.html">TICKET</a>
+      <a href="productos.html" class="activo">PRODUCTOS</a>
+      <a href="carrito.html">CARRITO</a>
+      <a href="ticket.html">TICKET</a>
     </div>
-</body>
+
+    <script src="js/productos.js"></script>
+  </body>
 </html>
+

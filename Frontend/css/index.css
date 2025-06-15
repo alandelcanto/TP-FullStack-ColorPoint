@@ -1,0 +1,77 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #ffffff, #d6ecff);
+}
+
+/* Contenedor principal */
+.wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sección de bienvenida */
+.contenedor-bienvenida {
+  background-color: #ffffff;
+  padding: 3rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 420px;
+  width: 92%;
+  border-top: 10px solid #0080ff;
+}
+
+/* Logo y títulos */
+.logo-container .logo {
+  width: 120px;
+  margin-bottom: 1.4rem;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #0080ff;
+  font-weight: 700;
+}
+
+.subtitulo {
+  font-size: 1.6rem;
+  margin: 0.7rem 0 1.7rem;
+  color: #444;
+}
+
+/* Input para nombre */
+.input-nombre {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1.15rem;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0.15rem rgba(0, 128, 255, 0.25);
+}
+
+/* Botón continuar */
+.boton-continuar {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1.15rem;
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, transform 0.1s;
+}
+
+.boton-continuar:hover {
+  background-color: #0066cc;
+  transform: scale(1.03);
+}
