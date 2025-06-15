@@ -1,5 +1,6 @@
 let productos = [];
 let tipoActual = 'pinturas'; // Estado actual (pinturas o herramientas)
+let colorActual = 'reset';
 
 // Cargar productos según la pestaña activa
 async function cargarProductos() {
@@ -42,8 +43,14 @@ function mostrarProductos(lista) {
   });
 }
 
+// Funcion filtradora de productos
+function filtrarProductos() {
+  const filtrados = filtrarPorTexto(filtrarPorColor(productos, colorActual));
+  mostrarProductos(filtrados);
+}
+
 // Filtro por texto para productos ya cargados
-function filtrarPorTexto() {
+function filtrarPorTexto(productos) {
   const texto = document.getElementById('busquedaGlobal').value.toLowerCase();
   console.log(`-> Filtrando por texto: "${texto}"`);
 
@@ -51,23 +58,21 @@ function filtrarPorTexto() {
     producto.nombre.toLowerCase().includes(texto) ||
     (producto.descripcion && producto.descripcion.toLowerCase().includes(texto))
   );
-  mostrarProductos(filtrados);
+  return filtrados;
 }
 
 // Filtrar por color (solo pinturas)
-function filtrarPorColor(color) {
+function filtrarPorColor(productos, color) {
   if (tipoActual !== 'pinturas') {
-    mostrarProductos(productos);
-    return;
+    return productos;
   }
 
   if (color === 'reset') {
-    mostrarProductos(productos);
-    return;
+    return productos;
   }
 
   const filtrados = productos.filter(p => (p.color || '').toLowerCase() === color.toLowerCase());
-  mostrarProductos(filtrados);
+  return filtrados;
 }
 
 // Configurar tabs para cambiar tipo y cargar productos
@@ -83,7 +88,7 @@ function configurarTabs() {
       console.log(`-> tipoActual actualizado a: ${tipoActual}`);
 
       // Mostrar filtros solo si es pinturas
-      const filtrosPinturas = document.getElementById('filtros-pinturas');
+      const filtrosPinturas = document.querySelector('.filtros-pinturas');
       if (filtrosPinturas) {
         filtrosPinturas.style.display = tipoActual === 'pinturas' ? 'block' : 'none';
       }
@@ -97,15 +102,79 @@ function configurarTabs() {
   });
 }
 
+// Configurar filtros para pinturas
+function configurarFiltrosPinturas() {
+  const formFiltros = document.querySelector('.filtros-pinturas');
+
+  console.log('-> Configurando filtros de pinturas');
+
+  // Extraer colores de productos
+  const colores = [];
+  productos.forEach(p => {
+    const color = p.color;
+    if (color && !colores.includes(color)) {
+      colores.push(color);
+    }
+  });
+
+  console.log(`-> Colores de pinturas encontrados: ${colores}`);
+
+  // Agregar botón Reset
+  const botonReset = document.createElement('button');
+  botonReset.textContent = 'Reset';
+  botonReset.type = 'button';
+  botonReset.addEventListener('click', () => {
+    const botonesColor = formFiltros.querySelectorAll('input[name="color"]');
+    botonesColor.forEach(boton => {
+      if (boton.checked) {
+        boton.checked = false;
+        colorActual = 'reset';
+        filtrarProductos();
+      }
+    });
+  });
+  formFiltros.appendChild(botonReset);
+
+  // Agregar botones de colores
+  colores.forEach(color => {
+    // Crear el Radiobutton
+    const boton = document.createElement('input');
+    boton.type = 'radio';
+    boton.name = 'color';
+    boton.id = `color-${color}`;
+    boton.value = color;
+    boton.addEventListener('change', () => {
+      colorActual = color;
+      filtrarProductos();
+    } );
+
+    // Crear el Label
+    const label = document.createElement('label');
+    label.setAttribute('for', `color-${color}`);
+    label.textContent = color;
+
+    // Agregar elementos al Form
+    formFiltros.appendChild(boton);
+    formFiltros.appendChild(label);
+  });
+}
+
+// Configurar barra de búsqueda
+function configurarBusqueda() {
+  const busquedaInput = document.getElementById('busquedaGlobal');
+  if (busquedaInput) {
+    busquedaInput.addEventListener('keyup', filtrarProductos);
+  }
+}
+
 // Inicialización general
 function init() {
   configurarTabs();
-  cargarProductos();
+  cargarProductos().then(() => {
+    configurarFiltrosPinturas();
+    configurarBusqueda();
+  });
 
-  const busquedaInput = document.getElementById('busquedaGlobal');
-  if (busquedaInput) {
-    busquedaInput.addEventListener('keyup', filtrarPorTexto);
-  }
 }
 
 document.addEventListener('DOMContentLoaded', init);
