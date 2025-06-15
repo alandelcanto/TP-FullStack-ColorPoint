@@ -44,7 +44,7 @@ function mostrarProductos(lista) {
 
 // Filtro por texto para productos ya cargados
 function filtrarPorTexto() {
-  const texto = document.getElementById('busquedaTipo').value.toLowerCase();
+  const texto = document.getElementById('busquedaGlobal').value.toLowerCase();
   console.log(`-> Filtrando por texto: "${texto}"`);
 
   const filtrados = productos.filter(producto =>
@@ -89,7 +89,7 @@ function configurarTabs() {
       }
 
       // Limpiar input búsqueda cuando se cambia tab
-      const busquedaInput = document.getElementById('busquedaTipo');
+      const busquedaInput = document.getElementById('busquedaGlobal');
       if (busquedaInput) busquedaInput.value = '';
 
       cargarProductos();
@@ -102,7 +102,7 @@ function init() {
   configurarTabs();
   cargarProductos();
 
-  const busquedaInput = document.getElementById('busquedaTipo');
+  const busquedaInput = document.getElementById('busquedaGlobal');
   if (busquedaInput) {
     busquedaInput.addEventListener('keyup', filtrarPorTexto);
   }
