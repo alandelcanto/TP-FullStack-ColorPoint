@@ -152,5 +152,159 @@
     "categoria": "interior",
     "marca": "Alba",
     "color": "Violeta"
+  },
+  {
+    "id": "P15",
+    "nombre": "Látex Interior Ocre Acrilplast 4 Lts",
+    "descripcion": "Pintura al látex de uso interior que proporciona un acabado mate homogéneo, resistente a la intemperie y a los lavados.",
+    "precio": 31020,
+    "img": "assets\\pinturas\\amarillo_1.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Sinteplast",
+    "color": "Amarillo"
+  },
+  {
+    "id": "P16",
+    "nombre": "Látex Interior Amarillo Acrilplast 4 Lt",
+    "descripcion": "Pintura al látex de uso interior que proporciona un acabado mate homogéneo, resistente a la intemperie y a los lavados.",
+    "precio": 37045,
+    "img": "assets\\pinturas\\amarillo_2.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Sinteplast",
+    "color": "Amarillo"
+  },
+  {
+    "id": "P17",
+    "nombre": "Latex Interior Design Amarillo Latino 4 Lts",
+    "descripcion": "Latex para Interiores Mate Óptimo poder cubritivo Colores más intensos y puros Excelente nivelación y lavabilidad. Alto PODER ANTIHONGO.",
+    "precio": 35209,
+    "img": "assets\\pinturas\\amarillo_3.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Amarillo"
+  },
+  {
+    "id": "P18",
+    "nombre": "Latex Interior Design Amarillo Latino 1 L",
+    "descripcion": "Latex para Interiores Mate Óptimo poder cubritivo Colores más intensos y puros Excelente nivelación y lavabilidad. Alto PODER ANTIHONGO.",
+    "precio": 9774,
+    "img": "assets\\pinturas\\amarillo_4.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Amarillo"
+  },
+  {
+    "id": "P19",
+    "nombre": "Látex Interior Bermellon Acrilplast 20 Lts ",
+    "descripcion": "Pintura al látex de uso interior y exterior que proporciona un acabado mate homogéneo, resistente a la intemperie y a los lavados.",
+    "precio": 139587,
+    "img": "assets\\pinturas\\rojo_1.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Sinteplast",
+    "color": "Rojo"
+  },
+  {
+    "id": "P20",
+    "nombre": "Látex Interior Bermellon Acrilplast 4 Lts",
+    "descripcion": "Pintura al látex de uso interior y exterior que proporciona un acabado mate homogéneo, resistente a la intemperie y a los lavados.",
+    "precio": 37045,
+    "img": "assets\\pinturas\\rojo_2.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Sinteplast",
+    "color": "Rojo"
+  },
+  {
+    "id": "P21",
+    "nombre": "Látex Interior Mate Rosa Maqueta 4 Lts ",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar. Es de fácil aplicación, proporciona un recubrimiento uniforme que seca rápidamente.",
+    "precio": 32949,
+    "img": "assets\\pinturas\\rojo_3.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Rojo"
+  },
+  {
+    "id": "P22",
+    "nombre": "Látex Interior Mate Ceibo 4 Lts",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar. Es de fácil aplicación, proporciona un recubrimiento uniforme que seca rápidamente.",
+    "precio": 32949,
+    "img": "assets\\pinturas\\rojo_4.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Rojo"
+  },
+  {
+    "id": "P23",
+    "nombre": "Látex Interior Mate Ceibo 1 L",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar. Es de fácil aplicación, proporciona un recubrimiento uniforme que seca rápidamente.",
+    "precio": 14400,
+    "img": "assets\\pinturas\\rojo_5.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Rojo"
+  },
+  {
+    "id": "P24",
+    "nombre": "Latex Interior Design Rojo Intenso 4 Lts",
+    "descripcion": "Latex para Interiores Mate Óptimo poder cubritivo Colores más intensos y puros Excelente nivelación y lavabilidad. Alto PODER ANTIHONGO.",
+    "precio": 35209,
+    "img": "assets\\pinturas\\rojo_6.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Rojo"
+  },
+  {
+    "id": "P25",
+    "nombre": "Látex Interior Rust Oleum Gris Tormenta Eggshell 3,785L",
+    "descripcion": "Pintura látex interior de alta calidad SURE COLOR de Rust-Oleum es una pintura base acuosa que puede aplicarse con brocha/pincel, rodillo o mediante pulverizado con sistemas airless para crear un acabado liso.",
+    "precio": 58217,
+    "img": "assets\\pinturas\\gris_1.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Sure Color",
+    "color": "Gris"
+  },
+  {
+    "id": "P26",
+    "nombre": "Latex Interior Design Gris Cinsel 1 L",
+    "descripcion": "Latex para Interiores Mate Óptimo poder cubritivo Colores más intensos y puros Excelente nivelación y lavabilidad. Alto PODER ANTIHONGO.",
+    "precio": 9469,
+    "img": "assets\\pinturas\\gris_2.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Gris"
+  },
+  {
+    "id": "P27",
+    "nombre": "Látex Interior Mate Guarana 4 Lts",
+    "descripcion": "Latex interior mate aterciopelado de calidad premium que ofrece una colección de colores de tendencia listos para usar. Es de fácil aplicación, proporciona un recubrimiento uniforme que seca rápidamente.",
+    "precio": 32949,
+    "img": "assets\\pinturas\\naranja_1.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Colorin",
+    "color": "Naranja"
+  },
+  {
+    "id": "P28",
+    "nombre": "Latex Interior Design Naranja Dulce 1 L",
+    "descripcion": "Latex para Interiores Mate Óptimo poder cubritivo Colores más intensos y puros Excelente nivelación y lavabilidad. Alto PODER ANTIHONGO.",
+    "precio": 32949,
+    "img": "assets\\pinturas\\naranja_2.png",
+    "stock": 8,
+    "categoria": "interior",
+    "marca": "Alba",
+    "color": "Naranja"
   }
 ]
