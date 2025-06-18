@@ -16,7 +16,7 @@ export default class Usuarios extends Model {
       unique: "username_UNIQUE"
     },
     password: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(300),
       allowNull: false
     }
   }, {

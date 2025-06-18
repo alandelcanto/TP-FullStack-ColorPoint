@@ -1,4 +1,4 @@
-import ProductoController from "../controllers/productoAPI.js";
+import ProductoController from "../controllers/productoAPIController.js";
 import { Router } from "express";
 
 const router = Router();

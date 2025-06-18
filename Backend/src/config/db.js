@@ -1,10 +1,22 @@
 import Sequelize from "sequelize";
 import initModels from "../models/init-models.js";
+import envs from "./envs.js";
 
-const sequelize = new Sequelize('colorpoint', 'colorpointadmin', 'password', {
-    host: 'localhost',
-    dialect: 'mysql'
+const { database, user, password, host, port } = envs.db_config;
+
+const sequelize = new Sequelize(database, user, password, {
+    host: host,
+    dialect: 'mysql',
+    port: port
+
 });
+
+try {
+    await sequelize.authenticate();
+    console.log('Connected to database.');
+} catch (err) {
+    console.error('DB connection failed:', err);
+}
 
 const models = initModels(sequelize);
 
