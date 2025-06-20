@@ -1,0 +1,73 @@
+/* Estilo general del ticket */
+.contenedor-ticket {
+  padding: 1rem;
+  padding-bottom: 80px; /* espacio para navbar */
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+}
+
+.ticket-box {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+.ticket-box h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.ticket-box p {
+  margin: 0.5rem 0;
+}
+
+.lista-productos {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.lista-productos li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+
+.lista-productos .nombre {
+  flex: 2;
+}
+
+.lista-productos .detalle {
+  flex: 1;
+  text-align: right;
+}
+
+.total {
+  font-size: 1.2rem;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .ticket-box {
+    padding: 1rem;
+  }
+
+  .lista-productos li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .lista-productos .detalle {
+    text-align: left;
+  }
+
+  .total {
+    text-align: left;
+  }
+}

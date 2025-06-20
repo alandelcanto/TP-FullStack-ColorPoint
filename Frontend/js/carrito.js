@@ -146,17 +146,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Botón FINALIZAR
-  const btnFinalizar = document.getElementById('btn-finalizar');
-  if (btnFinalizar) {
-    btnFinalizar.addEventListener('click', () => {
-      const carrito = obtenerCarrito();
-      if (carrito.length === 0) {
-        alert('Tu carrito está vacío.');
-        return;
-      }
-      console.log('[finalizar] Redirigiendo a ticket.html');
-      window.location.href = 'ticket.html';
-    });
-  }
+// Botón FINALIZAR
+const btnFinalizar = document.getElementById('btn-finalizar');
+if (btnFinalizar) {
+  btnFinalizar.addEventListener('click', () => {
+    const carrito = obtenerCarrito();
+    if (carrito.length === 0) {
+      alert('Tu carrito está vacío.');
+      return;
+    }
+
+    // Guardar el ticket en localStorage
+    const ticket = {
+      fecha: new Date().toLocaleString(),
+      items: carrito,
+      total: carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0),
+    };
+    localStorage.setItem('colorpoint-ticket', JSON.stringify(ticket));
+    console.log('[finalizar] Ticket guardado:', ticket);
+
+    // Redirigir
+    window.location.href = 'ticket.html';
+  });
+}
 });
