@@ -1,0 +1,170 @@
+/* Contenedor general */
+.contenedor-carrito {
+  padding: 1.5rem;
+  padding-bottom: 100px; /* Espacio para navbar inferior */
+  background: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+/* Tarjeta de producto en el carrito */
+.item-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 3px 7px rgba(0,0,0,0.15);
+  flex-wrap: wrap;
+}
+
+/* Imagen */
+.item-carrito img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+/* Nombre del producto */
+.item-carrito .nombre {
+  flex: 2;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Precio total */
+.item-carrito .precio {
+  flex: 2;
+  font-size: 1.1rem;
+  text-align: right;
+  color: #333;
+}
+
+/* Acciones de cantidad */
+.item-carrito .acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+/* Botones */
+.item-carrito button {
+  padding: 0.6rem 1rem;
+  font-size: 1.1rem;
+  background: #0080ff;
+  color: white;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+/* Botón eliminar */
+.item-carrito .eliminar {
+  background: #ff4d4d;
+  font-size: 1.1rem;
+}
+
+/* Botones de acción del carrito */
+.acciones-carrito {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #f5f5f5;
+  position: fixed;
+  bottom: 60px; /* para que no tape el navbar */
+  left: 0;
+  right: 0;
+  z-index: 10;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.acciones-carrito button {
+  flex: 1;
+  margin: 0 0.5rem;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+#btn-cancelar {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+#btn-finalizar {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Tablets (ancho máximo 768px) */
+@media (max-width: 768px) {
+  .item-carrito {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-carrito img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 0.8rem;
+  }
+
+  .item-carrito .nombre,
+  .item-carrito .precio,
+  .item-carrito .acciones {
+    flex: unset;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.6rem;
+  }
+
+  .item-carrito .precio {
+    text-align: right;
+    font-size: 1.2rem;
+  }
+
+  .item-carrito .acciones {
+    justify-content: flex-start;
+  }
+}
+
+/* Celulares (ancho máximo 480px) */
+@media (max-width: 480px) {
+  .contenedor-carrito {
+    padding: 1rem;
+    padding-bottom: 80px;
+  }
+
+  .item-carrito {
+    padding: 1rem;
+  }
+
+  .item-carrito img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .item-carrito .nombre {
+    font-size: 1.2rem;
+  }
+
+  .item-carrito .precio {
+    font-size: 1rem;
+  }
+
+  .item-carrito button {
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  .item-carrito .eliminar {
+    font-size: 1rem;
+  }
+}

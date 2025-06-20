@@ -27,21 +27,24 @@ function mostrarProductos(lista) {
   contenedor.innerHTML = '';
 
   if (!lista.length) {
-    contenedor.innerHTML = `<p style="grid-column: 1 / -1; text-align: center;">No se encontraron productos.</p>`;
+    contenedor.innerHTML = `<p>No se encontraron productos.</p>`;
     return;
   }
 
   lista.forEach(producto => {
-    contenedor.innerHTML += `
-      <div class="product-card">
-        <img src="${producto.img}" alt="${producto.nombre}">
-        <h3>${producto.nombre}</h3>
-        <p>$${producto.precio}</p>
-        <button class="add-to-cart" data-id="${producto.id}">Agregar al carrito</button>
-      </div>
+    const div = document.createElement('div');
+    div.className = 'product-card';
+    div.innerHTML = `
+      <img src="${producto.img}" alt="${producto.nombre}">
+      <h3>${producto.nombre}</h3>
+      <p>$${producto.precio}</p>
+      <button class="add-to-cart" data-id="${producto.id}">Agregar al carrito</button>
     `;
+    div.dataset.producto = JSON.stringify(producto);
+    contenedor.appendChild(div);
   });
 }
+
 
 // Funcion filtradora de productos
 function filtrarProductos() {
@@ -166,6 +169,19 @@ function configurarBusqueda() {
     busquedaInput.addEventListener('keyup', filtrarProductos);
   }
 }
+
+// Evento delegado para botones de carrito
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('add-to-cart')) {
+    const card = e.target.closest('.product-card');
+    const data = card?.dataset.producto;
+    if (data) {
+      const producto = JSON.parse(data);
+      agregarAlCarrito(producto);
+    }
+  }
+});
+
 
 // Inicialización general
 function init() {
