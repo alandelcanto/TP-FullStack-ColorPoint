@@ -3,13 +3,11 @@ const CARRITO_KEY = 'colorpoint-carrito';
 // Obtener carrito desde localStorage
 function obtenerCarrito() {
   const carrito = JSON.parse(localStorage.getItem(CARRITO_KEY)) || [];
-  console.log('[obtenerCarrito]', carrito);
   return carrito;
 }
 
 // Guardar carrito y actualizar contador
 function guardarCarrito(carrito) {
-  console.log('[guardarCarrito]', carrito);
   localStorage.setItem(CARRITO_KEY, JSON.stringify(carrito));
   actualizarContadorCarrito();
 }
@@ -44,7 +42,6 @@ function quitarUnidad(id) {
 
 // Sumar una unidad
 function sumarUnidad(id) {
-  console.log('[sumarUnidad] ID:', id);
   const carrito = obtenerCarrito().map(p => {
     if (p.id === id) {
       p.cantidad++;
@@ -58,7 +55,6 @@ function sumarUnidad(id) {
 
 // Eliminar completamente un producto
 function eliminarProducto(id) {
-  console.log('[eliminarProducto] ID:', id);
   const carrito = obtenerCarrito().filter(p => p.id !== id);
   guardarCarrito(carrito);
   renderizarCarrito();
@@ -68,19 +64,22 @@ function eliminarProducto(id) {
 function renderizarCarrito() {
   const contenedor = document.getElementById('carrito-productos');
   const carrito = obtenerCarrito();
+  const totalContenedor = document.getElementById('total-carrito');
   if (!contenedor) return;
 
   contenedor.innerHTML = '';
 
   if (carrito.length === 0) {
-    contenedor.innerHTML = '<p style="text-align: center;">Tu carrito está vacío.</p>';
+    contenedor.innerHTML = '<div class="mensaje-vacio">Tu carrito está vacío.</div>';
+    if (totalContenedor) totalContenedor.innerText = 'Total: $0';
     return;
   }
 
-  console.log('[renderizarCarrito] Productos en carrito:', carrito);
+  let total = 0;
 
   carrito.forEach(producto => {
-    console.log('[renderizarCarrito] producto:', producto);
+    total += producto.precio * producto.cantidad;
+
     const item = document.createElement('div');
     item.className = 'item-carrito';
     item.innerHTML = `
@@ -98,6 +97,10 @@ function renderizarCarrito() {
     `;
     contenedor.appendChild(item);
   });
+
+  if (totalContenedor) {
+    totalContenedor.innerText = `Total: $${total}`;
+  }
 }
 
 // Actualizar contador en navbar
@@ -116,7 +119,6 @@ document.addEventListener('click', e => {
 
   const action = button.dataset.action;
   const id = button.dataset.id; // ID como string
-  console.log('[click en botón]', action, 'ID:', id);
 
   if (action === 'sumar') {
     sumarUnidad(id);
@@ -141,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem(CARRITO_KEY);
         renderizarCarrito();
         actualizarContadorCarrito();
-        console.log('[cancelar] Carrito eliminado');
       }
     });
   }
@@ -163,6 +164,10 @@ if (btnFinalizar) {
       total: carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0),
     };
     localStorage.setItem('colorpoint-ticket', JSON.stringify(ticket));
+
+    // Vaciar el carrito después de guardar el ticket
+    localStorage.removeItem(CARRITO_KEY);
+
     console.log('[finalizar] Ticket guardado:', ticket);
 
     // Redirigir

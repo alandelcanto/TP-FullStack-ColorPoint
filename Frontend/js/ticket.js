@@ -1,6 +1,6 @@
 function generarIDTicket() {
-  const timestamp = Date.now(); // a  modificar
-  const random = Math.floor(Math.random() * 1000); // a modificar
+  const timestamp = Date.now(); 
+  const random = Math.floor(Math.random() * 1000);
   return `TCK-${timestamp}-${random}`;
 }
 
@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!contenedor) return;
 
   if (!data) {
-    contenedor.innerHTML = '<p style="text-align: center;">No hay ticket disponible.</p>';
+    contenedor.innerHTML = '<p>No hay ticket disponible.</p>';
+    const btnImprimir = document.getElementById('btn-imprimir');
+    if (btnImprimir) btnImprimir.style.display = 'none';
     return;
   }
 
@@ -44,4 +46,16 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
 
   contenedor.innerHTML = html;
+});
+
+//  Eliminar ticket y redirigir al presionar el botón de imprimir
+document.addEventListener('click', e => {
+  const boton = e.target.closest('#btn-imprimir');
+  if (!boton) return;
+
+  // Eliminar ticket
+  localStorage.removeItem('colorpoint-ticket');
+
+  // Redirigir a index.html
+  window.location.href = 'index.html';
 });

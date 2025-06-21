@@ -1,29 +1,46 @@
-/* Estilo general del ticket */
-.contenedor-ticket {
-  padding: 1rem;
-  padding-bottom: 80px; /* espacio para navbar */
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
+.contenido-wrapper {
+  padding-bottom: 120px;
 }
 
+/* Estilo general del ticket */
+.contenedor-ticket {
+  padding: 1rem 1rem 0 1rem; 
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  margin-bottom: 0; 
+}
+
+/* Caja del ticket */
 .ticket-box {
   background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 0.6rem;
   padding: 1.5rem;
   max-width: 700px;
   margin: auto;
+  border: 1.5px solid #0080ff;
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 128, 255, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.ticket-box:hover {
+  box-shadow: 0 0.9rem 1.8rem rgba(0, 128, 255, 0.2);
+  border-color: #005bb5;
 }
 
 .ticket-box h2 {
   text-align: center;
   margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #0080ff;
 }
 
 .ticket-box p {
   margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #333;
 }
 
+/* Lista de productos */
 .lista-productos {
   list-style: none;
   padding: 0;
@@ -39,35 +56,106 @@
 
 .lista-productos .nombre {
   flex: 2;
+  font-weight: bold;
+  color: #000;
 }
 
 .lista-productos .detalle {
   flex: 1;
   text-align: right;
+  color: #555;
 }
 
+/* Total */
 .total {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-align: right;
   margin-top: 1rem;
+  font-weight: bold;
+  color: #000;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .ticket-box {
-    padding: 1rem;
-  }
+/* Botón imprimir */
+.acciones-ticket {
+  margin: 0.5rem 1rem 0 1rem; 
+  text-align: center;
+}
 
-  .lista-productos li {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+#btn-imprimir {
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.6rem;
+  font-size: 1.2rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.2s;
+  font-weight: bold;
+}
 
-  .lista-productos .detalle {
-    text-align: left;
-  }
+#btn-imprimir:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
 
-  .total {
-    text-align: left;
-  }
+/* =============================
+   MODO OSCURO
+============================= */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark-mode .contenedor-ticket {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .ticket-box {
+  background-color: #2a2a2a;
+  border: 1.5px solid #3399ff;
+  box-shadow: 0 0.6rem 1.2rem rgba(51, 153, 255, 0.3);
+}
+
+body.dark-mode .ticket-box:hover {
+  box-shadow: 0 1rem 2rem rgba(51, 153, 255, 0.5);
+  border-color: #1f7fd2;
+}
+
+body.dark-mode .ticket-box h2 {
+  color: #3399ff;
+}
+
+body.dark-mode .ticket-box p {
+  color: #ccc;
+}
+
+body.dark-mode .lista-productos li {
+  border-color: #555555;
+}
+
+body.dark-mode .lista-productos .nombre {
+  color: #e0e0e0;
+}
+
+body.dark-mode .lista-productos .detalle {
+  color: #bbb;
+}
+
+body.dark-mode .total {
+  color: #eee;
+}
+
+body.dark-mode .acciones-ticket {
+  padding: 0.5rem 1rem;
+  border-radius: 0.6rem;
+}
+
+body.dark-mode #btn-imprimir {
+  background-color: #005bb5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode #btn-imprimir:hover {
+  background-color: #003d80;
 }

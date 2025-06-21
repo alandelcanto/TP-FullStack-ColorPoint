@@ -1,50 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carrito - Color Point</title>
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/carrito.css" />
-  <link rel="icon" href="assets/favicon.png" type="image/png" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito - Color Point</title>
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/carrito.css" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header-superior">
+      <img src="assets/logo.png" id="logo" alt="Logo Color Point" />
+      <div id="nombres">
+        <span>{NOMBRE1}</span>
+        <span>{NOMBRE2}</span>
+      </div>
+      <span id="iconos">
+        <button class="bi bi-moon" id="dark-mode"></button>
+        <a href="http://localhost:3000">Log In</a>
+      </span>
+    </header>
 
-  <!-- Header -->
-  <header id="header-superior">
-    <img src="assets/logo.png" id="logo" alt="Logo Color Point">
-    <div id="nombres">
-      <span>{NOMBRE1}</span>
-      <span>{NOMBRE2}</span>
-    </div>
-    <span id="iconos">
-      <button class="bi bi-moon" id="dark-mode"></button>
-      <a href="http://localhost:3000">Log In</a>
-    </span>
-  </header>
+    <!-- Contenedor dinámico de productos -->
+    <main class="main-carrito">
+      <section id="carrito-productos" class="contenedor-carrito"></section>
 
-<!-- Contenedor dinámico de productos -->
-<main>
-  <section id="carrito-productos" class="contenedor-carrito"></section>
+      <!-- Mensaje para carrito vacío -->
+      <div id="mensaje-vacio" class="mensaje-vacio oculto">
+        <p>Tu carrito está vacío.</p>
+      </div>
 
-  <!-- Botones de acción -->
-  <div id="acciones-carrito" class="acciones-carrito">
-    <button id="btn-cancelar">Cancelar</button>
-    <button id="btn-finalizar">Finalizar compra</button>
-  </div>
-</main>
+      <!-- Botones de acción + Total -->
+      <div id="acciones-carrito" class="acciones-carrito">
+        <button id="btn-cancelar">Cancelar</button>
+        <div id="total-carrito" class="total-carrito">Total: $0</div>
+        <button id="btn-finalizar">Finalizar compra</button>
+      </div>
+    </main>
 
+    <!-- Navbar inferior -->
+    <nav id="navbar-inferior">
+      <a href="productos.html">PRODUCTOS</a>
+      <a href="carrito.html" class="activo">CARRITO</a>
+      <a href="ticket.html">TICKET</a>
+    </nav>
 
-  <!-- Navbar inferior -->
-  <nav id="navbar-inferior">
-    <a href="productos.html">PRODUCTOS</a>
-    <a href="carrito.html" class="activo">CARRITO</a>
-    <a href="ticket.html">TICKET</a>
-  </nav>
-
-  <!-- Scripts -->
-  <script src="js/nombres.js"></script>
-  <script src="js/carrito.js"></script>
-</body>
+    <!-- Scripts externos -->
+    <script src="js/nombres.js"></script>
+    <script src="js/carrito.js"></script>
+    <script src="js/darkmode.js"></script>
+  </body>
 </html>

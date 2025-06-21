@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/favicon.png" type="image/png">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/index.css">
-    <title>Bienvenida</title>
-
-</head>
-
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/ticket.css" />
+    <title>Ticket</title>
+  </head>
+  <body>
+    <!-- Header -->
     <header id="header-superior">
-        <img src="assets/logo.png" id="logo">
-        <span id="iconos">
-            <div id="nombres">
-                <span>{NOMBRE1}</span>
-                <span>{NOMBRE2}</span>
-            </div>
-            <button class="bi bi-moon" id="dark-mode"></button>
-            <a href="http://localhost:3000">Log In</a>
-        </span>
+      <img src="assets/logo.png" id="logo" alt="Logo Color Point" />
+      <span id="iconos">
+        <div id="nombres">
+          <span>{NOMBRE1}</span>
+          <span>{NOMBRE2}</span>
+        </div>
+        <button class="bi bi-moon" id="dark-mode"></button>
+        <a href="http://localhost:3000">Log In</a>
+      </span>
     </header>
 
-    <main class="wrapper">
-        <section class="contenedor-bienvenida">
-            <div class="logo-container">
-                <img src="assets/logo.png" alt="Logo Color Point" class="logo" />
-                <h2 class="subtitulo">Bienvenido</h2>
-            </div>
-            <input type="text" id="nombreCliente" class="input-nombre" placeholder="Ingresá tu nombre" />
-            <button class="boton-continuar">Continuar</button>
-        </section>
+    <!-- Contenido del ticket -->
+    <main>
+      <div class="contenido-wrapper">
+        <section id="ticket-detalle" class="contenedor-ticket"></section>
+        <div class="acciones-ticket">
+          <button id="btn-imprimir">Imprimir ticket</button>
+        </div>
+      </div>
     </main>
 
-    <script src="js/nombres.js"></script>
-    <script src="js/index.js"></script>
-</body>
+    <!-- Navbar -->
+    <nav id="navbar-inferior">
+      <a href="productos.html">PRODUCTOS</a>
+      <a href="carrito.html">CARRITO</a>
+      <a href="ticket.html" class="activo">TICKET</a>
+    </nav>
 
+    <!-- Scripts -->
+    <script src="js/nombres.js"></script>
+    <script src="js/ticket.js"></script>
+    <script src="js/darkmode.js"></script>
+  </body>
 </html>

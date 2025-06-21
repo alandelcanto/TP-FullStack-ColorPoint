@@ -8,7 +8,7 @@
     "stock": 5,
     "categoria": "escaleras",
     "marca": "Alpina",
-    "material": "Aluminio y plastico"
+    "material": "Aluminio y platico"
   },
   {
     "id": "H2",
@@ -19,7 +19,7 @@
     "stock": 3,
     "categoria": "escaleras",
     "marca": "Alpina",
-    "material": "Aluminio"
+    "material": "Alumninio"
   },
   {
     "id": "H3",
@@ -30,7 +30,7 @@
     "stock": 3,
     "categoria": "escaleras",
     "marca": "Mor",
-    "material": "Aluminio"
+    "material": "Alumninio"
   },
   {
     "id": "H4",

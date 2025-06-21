@@ -1,55 +1,121 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 
 #header-superior {
-    top: 0;
-    height: 10%;
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 2px solid #dddddd;
-    padding: 0.3rem 1rem;
-    background-color: #ffffff;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
+  top: 0;
+  height: 10%;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 1rem;
+  border-bottom: 2px solid #dddddd;
+  background-color: #ffffff;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
-
 #header-superior img {
-    height: 100%;
+  height: 100%;
 }
 
 #header-superior div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #header-superior #nombres {
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#header-superior #nombres span {
+  /* Color por defecto (modo claro) */
+  color: #000;
 }
 
 #header-superior #iconos {
-    display: flex;
-    gap: 3rem;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
 }
 
 #header-superior #dark-mode {
-    font-size: 2rem;
-    border: none;
-    background-color: transparent;
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #333;
 }
 
 #header-superior a {
-    font-family:'Courier New', Courier, monospace;
-    color: #333;
-    font-size: 2rem;
-    font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  color: #333;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
 }
 
+/* Estilo buscador */
+.buscador-navbar {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0.9rem;
+  font-size: 1.15rem;
+  border: 1px solid #ccc;
+  border-radius: 0.6rem;
+  width: 220px;
+  box-shadow: inset 0 0 0.15rem rgba(0, 128, 255, 0.25);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.buscador-navbar::placeholder {
+  color: #999;
+}
+
+.buscador-navbar:focus {
+  border-color: #0080ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 128, 255, 0.3);
+}
+
+/* Modo oscuro para header */
+body.dark-mode #header-superior {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+  box-shadow: none;
+}
+
+body.dark-mode #header-superior a,
+body.dark-mode #header-superior #dark-mode {
+  color: #f0f0f0;
+}
+
+/* Modo oscuro para los nombres en header */
+body.dark-mode #header-superior #nombres span {
+  color: #f0f0f0;
+}
+
+/* Modo oscuro para buscador igual que input-nombre del index */
+body.dark-mode .buscador-navbar {
+  background-color: #333;
+  border-color: #555;
+  color: #e0e0e0;
+  box-shadow: inset 0 0 0.15rem rgba(51, 153, 255, 0.7);
+}
+
+body.dark-mode .buscador-navbar::placeholder {
+  color: #bbb;
+}
+
+body.dark-mode .buscador-navbar:focus {
+  border-color: #3399ff;
+  box-shadow: 0 0 8px rgba(51, 153, 255, 0.8);
+  outline: none;
+}
