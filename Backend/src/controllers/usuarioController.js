@@ -1,54 +1,73 @@
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import UsuarioDAO from "../dao/usuarioDAO.js";
+import {
+    getByNombre as getByNombreService,
+    post as postService,
+} from "../services/user.service.js";
 
-const SECRETO = process.env.JWT_SECRET;
-
-const UsuarioController = {
-    login: async (req, res) => {
+export const login = async (req, res) => {
+    try {
         const { username, password } = req.body;
-
-        try {
-            const usuario = await UsuarioDAO.getByNombre(username);
-
-            if (!usuario) {
-                return res.status(404).json({ error: "Usuario no encontrado" });
-            }
-
-            const passwordValido = await bcrypt.compare(password, usuario.password);
-
-            if (!passwordValido) {
-                return res.status(401).json({ error: "Contrasen?a incorrecta" });
-            }
-
-            const token = jwt.sign({ id: usuario.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-
-            res.status(200).json({ token });
-        } catch (error) {
-            res.status(500).json({ error: error.message });
+        if (!username || !password) {
+            return res.status(400).json({
+                message: "Faltan campos obligatorios: username, password",
+            });
         }
-    },
 
-
-    register: async (req, res) => {
-        const { username, password } = req.body;
-
-        try {
-            const usuario = await UsuarioDAO.getByNombre(username);
-            
-            if (usuario) {
-                return res.status(400).json({ error: "El usuario ya existe" });
-            }
-
-            const hashedPassword = await bcrypt.hash(password, 10);
-
-            const nuevoUsuario = await UsuarioDAO.post({ username, password: hashedPassword });
-
-            res.status(201).json(nuevoUsuario);
-        } catch (error) {
-            res.status(500).json({ error: error.message });
+        const usuario = await getByNombreService(username);
+        if (!usuario) {
+            return res.status(404).json({ error: "Usuario no encontrado" });
         }
+
+        const passwordValido = await bcrypt.compare(password, usuario.password);
+        if (!passwordValido) {
+            return res.status(401).json({ error: "Contrase«Ða incorrecta" });
+        }
+
+        const token = jwt.sign({ id: usuario.id }, process.env.JWT_SECRET, {
+            expiresIn: "1h",
+        });
+
+        return res.status(200).json({
+            message: "Inicio de sesio?n exitoso",
+            payload: token,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message,
+        });
     }
 };
 
-export default UsuarioController;
+export const register = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        if (!username || !password) {
+            return res.status(400).json({
+                message: "Faltan campos obligatorios: username, password",
+            });
+        }
+
+        const usuario = await getByNombreService(username);
+        if (usuario) {
+            return res.status(400).json({ error: "El usuario ya existe" });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const nuevoUsuario = await postService({
+            username,
+            password: hashedPassword,
+        });
+
+        return res.status(201).json({
+            message: "Usuario creado exitosamente",
+            payload: nuevoUsuario,
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message,
+        });
+    }
+};

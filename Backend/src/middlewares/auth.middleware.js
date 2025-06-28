@@ -1,18 +1,16 @@
 import jwt from "jsonwebtoken";
 
-const SECRETO = process.env.JWT_SECRET;
-
 const authMiddleware = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
         if (!token) {
-            return res.status(401).json({ error: "Token no proporcionado" });
+            return res.status(401).json({ message: "Acceso no autorizado" });
         }
-        const decoded = jwt.verify(token, SECRETO);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.user = decoded;
         next();
     } catch (error) {
-        res.status(403).json({ error: "Token invalido" });
+        res.status(403).json({ message: "Acceso prohibido" });
     }
 };
 

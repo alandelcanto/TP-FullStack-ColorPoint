@@ -13,11 +13,10 @@ const sequelize = new Sequelize(database, user, password, {
 
 try {
     await sequelize.authenticate();
-    console.log('Connected to database.');
+    console.log('Conectado a la DB');
 } catch (err) {
-    console.error('DB connection failed:', err);
+    console.error('Conexion con la DB fallida', err);
 }
 
 const models = initModels(sequelize);
-
-export { sequelize, models };
+export {sequelize, models};
