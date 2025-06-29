@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    const Usuario = sequelize.define("Usuario", {
+    return sequelize.define("Usuario", {
         id: {
             autoIncrement: true,
             type: DataTypes.INTEGER,

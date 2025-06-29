@@ -8,7 +8,7 @@ export default (sequelize, DataTypes) => {
         },
         url: {
             type: DataTypes.STRING(200),
-            allowNull: true,
+            allowNull: false,
         },
     });
 };

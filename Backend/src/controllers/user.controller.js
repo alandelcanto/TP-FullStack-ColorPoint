@@ -30,7 +30,7 @@ export const login = async (req, res) => {
 
         return res.status(200).json({
             message: "Inicio de sesio?n exitoso",
-            payload: token,
+            token,
         });
     } catch (error) {
         return res.status(500).json({
@@ -62,7 +62,10 @@ export const register = async (req, res) => {
 
         return res.status(201).json({
             message: "Usuario creado exitosamente",
-            payload: nuevoUsuario,
+            payload: {
+                id: nuevoUsuario.id,
+                username: nuevoUsuario.username,
+            },
         });
     } catch (error) {
         return res.status(500).json({

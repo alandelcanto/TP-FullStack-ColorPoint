@@ -22,20 +22,20 @@ export const destroy = async (id) => {
 };
 
 export const searchPaints = async ({limit = 10, offset = 0}) => {
-    return await Producto.findAll(
+    return await Producto.findAndCountAll(
         {
-            limit: limit,
-            offset: offset,
+            limit: +limit,
+            offset: +offset,
             where: { tipo: "pintura" , activo : true},
         }
     );
 }
 
 export const searchPaintsByColor = async ({limit = 10, offset = 0, color}) => {
-    return await Producto.findAll(
+    return await Producto.findAndCountAll(
         {
-            limit: limit,
-            offset: offset,
+            limit: +limit,
+            offset: +offset,
             where: { color_material: color, tipo: "pintura", activo : true},
         }
     );
@@ -52,10 +52,10 @@ export const searchColors = async () => {
 }
 
 export const searchTools = async ({limit = 10, offset = 0}) => {
-    return await Producto.findAll(
+    return await Producto.findAndCountAll(
         {
-            limit: limit,
-            offset: offset,
+            limit: +limit,
+            offset: +offset,
             where: { tipo: "herramienta", activo : true},
         }
     );

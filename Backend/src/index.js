@@ -1,8 +1,9 @@
 import express from "express";
 import { publicPath } from "./utils/paths.js";
-import productosAPIRoutes from "./routes/product.routes.js";
-import usuariosRoutes from "./routes/usuarioRoutes.js";
-import comprobantesAPIRoutes from "./routes/ticket.routes.js";
+import rutasProductos from "./routes/product.routes.js";
+import rutasUsuarios from "./routes/user.routes.js";
+import rutasComprobantes from "./routes/ticket.routes.js";
+import rutasImagenes from "./routes/image.routes.js";
 import envs from "./config/envs.js";
 import { sequelize } from "./config/db.js";
 import cors from "cors";
@@ -14,7 +15,7 @@ app.set("PORT", envs.port || 3000);
 
 const initializeConnection = async () => {
     try {
-        await sequelize.sync({alter: true});
+        await sequelize.sync({ force: false, alter: false });
         console.log("DB sincronizada");
     } catch (error) {
         console.error(error);
@@ -33,9 +34,10 @@ app.use(
 );
 
 // routes
-app.use("/api/usuarios", usuariosRoutes);
-app.use("/api/comprobantes", comprobantesAPIRoutes);
-app.use("/api/productos", productosAPIRoutes);
+app.use("/api/usuarios", rutasUsuarios);
+app.use("/api/comprobantes", rutasComprobantes);
+app.use("/api/productos", rutasProductos);
+app.use("/api/imagenes", rutasImagenes);
 
 // listen
 initializeConnection();

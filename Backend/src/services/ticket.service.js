@@ -1,6 +1,31 @@
 import { sequelize, models } from "../config/db.js";
 const { Comprobante, DetalleComprobante } = models;
 
+export const get = async (id) => {
+    return sequelize.transaction(async (t) => {
+        return await Comprobante.findByPk(id, {
+        include: {
+            model: DetalleComprobante,
+            as: "detallecomprobantes",
+        },
+        transaction: t,
+    });
+    })
+};
+
+export const getAll = async () => {
+    return sequelize.transaction(async (t) => {
+        return await Comprobante.findAll({
+        include: {
+            model: DetalleComprobante,
+            as: "detallecomprobantes",
+        },
+        transaction: t,
+    });
+    })
+    
+}
+
 export const post = async (comprobanteData, detalleComprobante) => {
     return await sequelize.transaction(async (t) => {
         const comprobante = await Comprobante.create(comprobanteData, {

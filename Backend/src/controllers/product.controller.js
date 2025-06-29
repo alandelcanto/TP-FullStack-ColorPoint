@@ -65,7 +65,7 @@ export const post = async (req, res) => {
         if (
             activo === undefined ||
             !nombre ||
-            !descripcion ||
+            descripcion === undefined ||
             !precio ||
             !img ||
             !color_material ||
@@ -77,15 +77,7 @@ export const post = async (req, res) => {
             });
         }
 
-        const producto = await postService({
-            activo,
-            nombre,
-            descripcion,
-            precio,
-            img,
-            color_material,
-            tipo,
-        });
+        const producto = await postService(req.body);
         return res.status(200).json({
             message: "Producto creado",
             payload: producto,
@@ -117,15 +109,7 @@ export const put = async (req, res) => {
             tipo,
         } = req.body;
 
-        const [filasAfectadas] = await putService(id, {
-            activo,
-            nombre,
-            descripcion,
-            precio,
-            img,
-            color_material,
-            tipo,
-        });
+        const [filasAfectadas] = await putService(id, req.body);
         if (filasAfectadas === 0) {
             return res.status(404).json({
                 error: "Producto no encontrado / cambios no realizados",
@@ -176,18 +160,23 @@ export const searchColors = async (req, res) => {
         let { limit, offset } = req.query;
         limit = +limit;
         offset = +offset;
+        if(!limit) limit = 10
+        if(!offset) offset = 0
 
         const colores = await searchColorsService({ limit, offset });
         return res
             .status(200)
-            .json({ message: "Colores obtenidos", payload: limit, offset, ...colores });
-    } catch (error) {
-        return res
-            .status(500)
             .json({
-                message: "Error interno del servidor",
-                error: error.message,
+                message: "Colores obtenidos",
+                payload: limit,
+                offset,
+                ...colores,
             });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message,
+        });
     }
 };
 
@@ -196,18 +185,23 @@ export const searchTools = async (req, res) => {
         let { limit, offset } = req.query;
         limit = +limit;
         offset = +offset;
+        if(!limit) limit = 10
+        if(!offset) offset = 0
 
         const herramientas = await searchToolsService({ limit, offset });
         return res
             .status(200)
-            .json({ message: "Herramientas obtenidas", payload: limit, offset, ...herramientas });
-    } catch (error) {
-        return res
-            .status(500)
             .json({
-                message: "Error interno del servidor",
-                error: error.message,
+                message: "Herramientas obtenidas",
+                payload: limit,
+                offset,
+                ...herramientas,
             });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message,
+        });
     }
 };
 
@@ -216,25 +210,55 @@ export const searchPaints = async (req, res) => {
         let { limit, offset } = req.query;
         limit = +limit;
         offset = +offset;
-        const {color} = req.query
-
-        if (color || color !== "") {
-            const pinturas = await searchPaintsByColorService({ limit, offset, color });
-            return res
-                .status(200)
-                .json({ message: "Pinturas obtenidas", payload: limit, offset, ...pinturas });
-        } else {
-            const pinturas = await searchPaintsService({ limit, offset });
-            return res
-                .status(200)
-                .json({ message: "Pinturas obtenidas", payload: limit, offset, ...pinturas });
-        }
-    } catch (error) {
+        if(!limit) limit = 10
+        if(!offset) offset = 0
+        const pinturas = await searchPaintsService({ limit, offset });
         return res
-            .status(500)
+            .status(200)
             .json({
-                message: "Error interno del servidor",
-                error: error.message,
+                message: "Pinturas obtenidas",
+                payload: limit,
+                offset,
+                ...pinturas,
             });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message,
+        });
+    }
+};
+
+export const searchPaintsByColor = async (req, res) => {
+    try {
+        let { limit, offset } = req.query;
+        limit = +limit;
+        offset = +offset;
+        if(!limit) limit = 10
+        if(!offset) offset = 0
+        const { color } = req.params;
+        if (!color) {
+            return res
+                .status(400)
+                .json({ message: "Falta el color de la pintura" });
+        }
+        const pinturas = await searchPaintsByColorService({
+            limit,
+            offset,
+            color,
+        });
+        return res
+            .status(200)
+            .json({
+                message: "Pinturas obtenidas",
+                payload: limit,
+                offset,
+                ...pinturas,
+            });
+    } catch (error) {
+        return res.status(500).json({
+            message: "Error interno del servidor",
+            error: error.message,
+        });
     }
 };
