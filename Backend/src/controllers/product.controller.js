@@ -160,18 +160,16 @@ export const searchColors = async (req, res) => {
         let { limit, offset } = req.query;
         limit = +limit;
         offset = +offset;
-        if(!limit) limit = 10
-        if(!offset) offset = 0
+        if (!limit) limit = 10;
+        if (!offset) offset = 0;
 
         const colores = await searchColorsService({ limit, offset });
-        return res
-            .status(200)
-            .json({
-                message: "Colores obtenidos",
-                payload: limit,
-                offset,
-                ...colores,
-            });
+        return res.status(200).json({
+            message: "Colores obtenidos",
+            payload: limit,
+            offset,
+            ...colores,
+        });
     } catch (error) {
         return res.status(500).json({
             message: "Error interno del servidor",
@@ -182,21 +180,21 @@ export const searchColors = async (req, res) => {
 
 export const searchTools = async (req, res) => {
     try {
-        let { limit, offset } = req.query;
+        let { limit, offset, search } = req.query;
         limit = +limit;
         offset = +offset;
-        if(!limit) limit = 10
-        if(!offset) offset = 0
+        if (!limit) limit = 10;
+        if (!offset) offset = 0;
+        if (!search) search = "";
 
-        const herramientas = await searchToolsService({ limit, offset });
-        return res
-            .status(200)
-            .json({
-                message: "Herramientas obtenidas",
-                payload: limit,
-                offset,
-                ...herramientas,
-            });
+        const herramientas = await searchToolsService(
+            { limit, offset },
+            search
+        );
+        return res.status(200).json({
+            message: "Herramientas obtenidas",
+            payload: { limit, offset, search, ...herramientas },
+        });
     } catch (error) {
         return res.status(500).json({
             message: "Error interno del servidor",
@@ -207,20 +205,18 @@ export const searchTools = async (req, res) => {
 
 export const searchPaints = async (req, res) => {
     try {
-        let { limit, offset } = req.query;
+        let { limit, offset, search } = req.query;
         limit = +limit;
         offset = +offset;
-        if(!limit) limit = 10
-        if(!offset) offset = 0
+        if (!limit) limit = 10;
+        if (!offset) offset = 0;
+        if (!search) search = "";
+
         const pinturas = await searchPaintsService({ limit, offset });
-        return res
-            .status(200)
-            .json({
-                message: "Pinturas obtenidas",
-                payload: limit,
-                offset,
-                ...pinturas,
-            });
+        return res.status(200).json({
+            message: "Pinturas obtenidas",
+            payload: { limit, offset, search, ...pinturas },
+        });
     } catch (error) {
         return res.status(500).json({
             message: "Error interno del servidor",
@@ -231,30 +227,34 @@ export const searchPaints = async (req, res) => {
 
 export const searchPaintsByColor = async (req, res) => {
     try {
-        let { limit, offset } = req.query;
+        let { limit, offset, search } = req.query;
         limit = +limit;
         offset = +offset;
-        if(!limit) limit = 10
-        if(!offset) offset = 0
+        if (!limit) limit = 10;
+        if (!offset) offset = 0;
+        if (!search) search = "";
+
         const { color } = req.params;
         if (!color) {
             return res
                 .status(400)
                 .json({ message: "Falta el color de la pintura" });
         }
-        const pinturas = await searchPaintsByColorService({
-            limit,
-            offset,
-            color,
-        });
-        return res
-            .status(200)
-            .json({
-                message: "Pinturas obtenidas",
-                payload: limit,
+        const pinturas = await searchPaintsByColorService(
+            {
+                limit,
                 offset,
-                ...pinturas,
-            });
+            },
+            color,
+            search
+        );
+        return res.status(200).json({
+            message: "Pinturas obtenidas",
+            payload: {limit,
+            offset,
+            search,
+            ...pinturas}
+        });
     } catch (error) {
         return res.status(500).json({
             message: "Error interno del servidor",
