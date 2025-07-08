@@ -1,5 +1,4 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import {
     getByNombre as getByNombreService,
     post as postService,
@@ -21,12 +20,8 @@ export const login = async (req, res) => {
 
         const passwordValido = await bcrypt.compare(password, usuario.password);
         if (!passwordValido) {
-            return res.status(401).json({ error: "Contrase«Ğa incorrecta" });
+            return res.status(401).json({ error: "Contraseï¿½Â«Ãa incorrecta" });
         }
-
-        const token = jwt.sign({ id: usuario.id }, process.env.JWT_SECRET, {
-            expiresIn: "1h",
-        });
 
         return res.status(200).json({
             message: "Inicio de sesio?n exitoso",

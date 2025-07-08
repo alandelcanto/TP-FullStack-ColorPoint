@@ -11,11 +11,11 @@ export default (sequelize, DataTypes) => {
             allowNull: false,
         },
         nombre: {
-            type: DataTypes.STRING(45),
+            type: DataTypes.STRING(200),
             allowNull: false,
         },
         descripcion: {
-            type: DataTypes.STRING(200),
+            type: DataTypes.STRING(500),
             allowNull: false,
         },
         precio: {
