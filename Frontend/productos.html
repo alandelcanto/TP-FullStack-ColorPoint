@@ -14,7 +14,7 @@
 <body>
     <!-- Navbar superior -->
     <header id="header-superior">
-        <img src="assets/logo.png" id="logo">
+        <a href="index.html"><img src="assets/logo.png" id="logo" alt="Logo Color Point" /></a>
         <input type="text" id="busquedaGlobal" class="buscador-navbar" placeholder="Buscar productos..." />
         <div id="nombres">
             <span>{NOMBRE1}</span>
@@ -22,11 +22,11 @@
         </div>
         <span id="iconos">
             <button class="bi bi-moon" id="dark-mode"></button>
-            <a href="http://localhost:3000">Log In</a>
         </span>
     </header>
 
     <form class="filtros-pinturas"></form>
+    
 
     <!-- Contenido principal -->
     <main class="contenido">
@@ -35,19 +35,21 @@
             <button class="tab">Herramientas</button>
         </div>
 
+        <section id="paginacion" class="paginacion"></section>
+
         <!-- Lista de productos -->
         <section id="lista-productos" class="productos"></section>
     </main>
+
 
     <!-- Navbar inferior -->
     <nav id="navbar-inferior">
         <a href="productos.html" class="activo">PRODUCTOS</a>
         <a href="carrito.html">CARRITO</a>
-        <a href="ticket.html">TICKET</a>
     </nav>
 
-    <script src="js/productos.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/productos.js"></script>
     <script src="js/nombres.js"></script>
     <script src="js/darkmode.js"></script>
 </body>

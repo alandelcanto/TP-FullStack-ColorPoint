@@ -38,6 +38,10 @@ body {
 .filtros-pinturas {
   text-align: center;
   margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .filtros-pinturas button,
@@ -138,6 +142,42 @@ body {
 }
 
 /* =============================
+   PAGINACION
+============================= */
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.paginacion button {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.paginacion button:hover {
+  background-color: #005bb5;
+}
+
+.paginacion button.activo  {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  background-color: #004181;
+  color: white;
+  border-style: solid;
+  border-color: #0080ff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* =============================
    MODO OSCURO
 ============================= */
 body.dark-mode {
@@ -173,6 +213,11 @@ body.dark-mode .filtros-pinturas button:hover,
 body.dark-mode .filtros-pinturas label:hover {
   background-color: #3399ff;
   color: #fff;
+}
+
+.filtros-pinturas input:checked + label {
+  background-color: #0066cc;
+  color: white;
 }
 
 body.dark-mode .product-card {

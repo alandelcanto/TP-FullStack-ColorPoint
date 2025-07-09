@@ -1,16 +1,10 @@
-function generarIDTicket() {
-  const timestamp = Date.now(); 
-  const random = Math.floor(Math.random() * 1000);
-  return `TCK-${timestamp}-${random}`;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   const contenedor = document.getElementById('ticket-detalle');
   const data = localStorage.getItem('colorpoint-ticket');
   const nombreCliente = sessionStorage.getItem('nombreCliente') || 'Cliente';
   const empresa = "Color Point";
   const fecha = new Date().toLocaleString();
-  const ticketID = generarIDTicket();
+  const ticketID = localStorage.getItem('idTicket') || 'N/A';
 
   if (!contenedor) return;
 
@@ -55,6 +49,7 @@ document.addEventListener('click', e => {
 
   // Eliminar ticket
   localStorage.removeItem('colorpoint-ticket');
+  localStorage.removeItem('idTicket');
 
   // Redirigir a index.html
   window.location.href = 'index.html';

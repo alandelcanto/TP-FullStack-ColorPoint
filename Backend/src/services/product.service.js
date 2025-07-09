@@ -27,8 +27,7 @@ export const searchPaints = async ({limit = 10, offset = 0}, search) => {
         {
             limit: +limit,
             offset: +offset,
-            where: { tipo: "pintura" , activo : true},
-            [Op.like]: `%${search}%`,
+            where: { tipo: "pintura" , activo : true, nombre : { [Op.like]: `%${search}%` }},
         }
     );
 }
@@ -38,8 +37,7 @@ export const searchPaintsByColor = async ({limit = 10, offset = 0}, color, searc
         {
             limit: +limit,
             offset: +offset,
-            where: { color_material: color, tipo: "pintura", activo : true},
-            [Op.like]: `%${search}%`,
+            where: { color_material: color, tipo: "pintura", activo : true, nombre : { [Op.like]: `%${search}%` }},
         }
     );
 }
@@ -59,8 +57,7 @@ export const searchTools = async ({limit = 10, offset = 0}, search) => {
         {
             limit: +limit,
             offset: +offset,
-            where: { tipo: "herramienta", activo : true},
-            [Op.like]: `%${search}%`,
+            where: { tipo: "herramienta", activo : true, nombre : { [Op.like]: `%${search}%` }},
         }
     );
 }

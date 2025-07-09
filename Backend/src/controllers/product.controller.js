@@ -157,19 +157,11 @@ export const destroy = async (req, res) => {
 
 export const searchColors = async (req, res) => {
     try {
-        let { limit, offset } = req.query;
-        limit = +limit;
-        offset = +offset;
-        if (!limit) limit = 10;
-        if (!offset) offset = 0;
-
-        const colores = await searchColorsService({ limit, offset });
+        const colores = await searchColorsService();
         return res.status(200).json({
             message: "Colores obtenidos",
-            payload: limit,
-            offset,
-            ...colores,
-        });
+            payload: colores,
+    });
     } catch (error) {
         return res.status(500).json({
             message: "Error interno del servidor",
@@ -212,7 +204,7 @@ export const searchPaints = async (req, res) => {
         if (!offset) offset = 0;
         if (!search) search = "";
 
-        const pinturas = await searchPaintsService({ limit, offset });
+        const pinturas = await searchPaintsService({ limit, offset }, search);
         return res.status(200).json({
             message: "Pinturas obtenidas",
             payload: { limit, offset, search, ...pinturas },

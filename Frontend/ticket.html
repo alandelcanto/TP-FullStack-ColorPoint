@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="assets/favicon.png" type="image/png" />
     <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/ticket.css" />
     <title>Ticket</title>
   </head>
   <body>
     <!-- Header -->
     <header id="header-superior">
-      <img src="assets/logo.png" id="logo" alt="Logo Color Point" />
+      <a href="index.html"><img src="assets/logo.png" id="logo" alt="Logo Color Point" /></a>
       <span id="iconos">
         <div id="nombres">
           <span>{NOMBRE1}</span>
           <span>{NOMBRE2}</span>
         </div>
         <button class="bi bi-moon" id="dark-mode"></button>
-        <a href="http://localhost:3000">Log In</a>
       </span>
     </header>
 
@@ -33,15 +31,9 @@
       </div>
     </main>
 
-    <!-- Navbar -->
-    <nav id="navbar-inferior">
-      <a href="productos.html">PRODUCTOS</a>
-      <a href="carrito.html">CARRITO</a>
-      <a href="ticket.html" class="activo">TICKET</a>
-    </nav>
-
     <!-- Scripts -->
     <script src="js/nombres.js"></script>
+    <script src="js/carrito.js"></script>
     <script src="js/ticket.js"></script>
     <script src="js/darkmode.js"></script>
   </body>
