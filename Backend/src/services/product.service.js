@@ -1,4 +1,4 @@
-import {Op} from "sequelize";
+import { Op } from "sequelize";
 import { models } from "../config/db.js";
 const { Producto } = models;
 
@@ -22,42 +22,73 @@ export const destroy = async (id) => {
     return await Producto.destroy({ where: { id } });
 };
 
-export const searchPaints = async ({limit = 10, offset = 0}, search) => {
-    return await Producto.findAndCountAll(
-        {
+export const searchPaints = async (
+    { limit = 10, offset = 0 },
+    search,
+    admin
+) => {
+    if (admin)
+        return await Producto.findAndCountAll({
             limit: +limit,
             offset: +offset,
-            where: { tipo: "pintura" , activo : true, nombre : { [Op.like]: `%${search}%` }},
-        }
-    );
-}
+            where: { tipo: "pintura" },
+        });
 
-export const searchPaintsByColor = async ({limit = 10, offset = 0}, color, search) => {
-    return await Producto.findAndCountAll(
-        {
-            limit: +limit,
-            offset: +offset,
-            where: { color_material: color, tipo: "pintura", activo : true, nombre : { [Op.like]: `%${search}%` }},
-        }
-    );
-}
+    return await Producto.findAndCountAll({
+        limit: +limit,
+        offset: +offset,
+        where: {
+            tipo: "pintura",
+            activo: true,
+            nombre: { [Op.like]: `%${search}%` },
+        },
+    });
+};
+
+export const searchPaintsByColor = async (
+    { limit = 10, offset = 0 },
+    color,
+    search
+) => {
+    return await Producto.findAndCountAll({
+        limit: +limit,
+        offset: +offset,
+        where: {
+            color_material: color,
+            tipo: "pintura",
+            activo: true,
+            nombre: { [Op.like]: `%${search}%` },
+        },
+    });
+};
 
 export const searchColors = async () => {
-    return await Producto.findAll(
-        {
-            attributes: ["color_material"],
-            group: ["color_material"],
-            where: { tipo: "pintura", activo : true},
-        }
-    );
-}
+    return await Producto.findAll({
+        attributes: ["color_material"],
+        group: ["color_material"],
+        where: { tipo: "pintura", activo: true },
+    });
+};
 
-export const searchTools = async ({limit = 10, offset = 0}, search) => {
-    return await Producto.findAndCountAll(
-        {
+export const searchTools = async (
+    { limit = 10, offset = 0 },
+    search,
+    admin
+) => {
+    if (admin)
+        return await Producto.findAndCountAll({
             limit: +limit,
             offset: +offset,
-            where: { tipo: "herramienta", activo : true, nombre : { [Op.like]: `%${search}%` }},
-        }
-    );
-}
+            where: { tipo: "herramienta" },
+        });
+
+    return await Producto.findAndCountAll({
+        limit: +limit,
+        offset: +offset,
+        where: {
+            tipo: "herramienta",
+            activo: true,
+            nombre: { [Op.like]: `%${search}%` },
+        },
+    });
+};

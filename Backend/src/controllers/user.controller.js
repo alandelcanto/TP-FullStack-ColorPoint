@@ -20,12 +20,11 @@ export const login = async (req, res) => {
 
         const passwordValido = await bcrypt.compare(password, usuario.password);
         if (!passwordValido) {
-            return res.status(401).json({ error: "Contrase�«Ða incorrecta" });
+            return res.status(401).json({ error: "Contraseña incorrecta" });
         }
 
         return res.status(200).json({
-            message: "Inicio de sesio?n exitoso",
-            token,
+            message: "Inicio de sesión exitoso"
         });
     } catch (error) {
         return res.status(500).json({

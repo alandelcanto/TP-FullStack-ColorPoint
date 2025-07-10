@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+</head>
+
+<body>
+    <%- include('./partials/header') %>
+
+    <div id="login-container">
+        <h1>Iniciar sesión como Administrador</h1>
+
+        <div id="login-box">
+            <form id="login-form">
+                <div>
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required />
+                </div>
+                <div>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required />
+                </div>
+                <button id="auto-fill-button" type="button">Auto llenar datos</button>
+                <button type="submit">Ingresar</button>
+                <p id="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+        <script src="/js/login.js"></script>
+</body>
+
+</html>

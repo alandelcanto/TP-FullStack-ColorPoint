@@ -7,8 +7,8 @@ const { database, user, password, host, port } = envs.db_config;
 const sequelize = new Sequelize(database, user, password, {
     host: host,
     dialect: 'mysql',
-    port: port
-
+    port: port,
+    logging: false
 });
 
 try {

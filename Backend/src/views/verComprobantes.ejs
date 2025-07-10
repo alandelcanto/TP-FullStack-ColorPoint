@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Lista de Ventas</title>
+	<link rel="stylesheet" href="/css/comprobantes.css" />
+	<link rel="stylesheet" href="/css/header.css" />
+	<link rel="stylesheet" href="/css/navbar.css" />
+	<link rel="stylesheet" href="/css/paginacion.css" />
+	<link rel="icon" href="/assets/favicon.png" type="image/png" />
+</head>
+
+<body>
+	<%- include('./partials/header') %>
+		<%- include('./partials/navbar') %>
+			<h1>Ventas</h1>
+
+			<% tickets.forEach(ticket=> { %>
+				<div class="ticket">
+					<div class="ticket-header">
+						<p><strong>ID:</strong>
+							<%= ticket.id %>
+						</p>
+						<p><strong>Cliente:</strong>
+							<%= ticket.nombre_cliente %>
+						</p>
+						<p><strong>Fecha:</strong>
+							<%= ticket.fecha %>
+						</p>
+					</div>
+
+					<div class="ticket-items">
+						<h4>Productos</h4>
+						<table>
+							<thead>
+								<tr>
+									<th>Producto ID</th>
+									<th>Cantidad</th>
+									<th>Precio Unidad</th>
+									<th>Subtotal</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% ticket.detallecomprobantes.forEach(item=> { %>
+									<tr>
+										<td>
+											<%= item.producto_id %>
+												(<%= item.producto.nombre %>)
+										</td>
+										<td>
+											<%= item.cantidad %>
+										</td>
+										<td>$<%= Number(item.precio_unidad).toFixed(2) %>
+										</td>
+										<td>$<%= Number(item.precio_subtotal).toFixed(2) %>
+										</td>
+									</tr>
+									<% }) %>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="ticket-total">
+						Total: $<%= Number(ticket.total).toFixed(2) %>
+					</div>
+				</div>
+				<% }) %>
+
+					<% const paginas=Math.ceil(cantidad / 10); %>
+
+						<div class="paginacion">
+							<% for (let i=0; i < paginas; i++) { %>
+								<% query.offset=i * 10; const queryString=new URLSearchParams(query).toString(); %>
+									<a href="?<%= queryString %>">
+										<%= i + 1 %>
+									</a>
+									<% } %>
+						</div>
+</body>
+
+</html>

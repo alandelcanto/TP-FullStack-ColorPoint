@@ -54,7 +54,7 @@ async function cargarImagen(id) {
         const response = await fetch(`${urlBackend}/api/imagenes/${id}`);
 
         const imagenRaw = await response.json();
-        return imagenRaw.payload.url;
+        return `${urlBackend}/${imagenRaw.payload.url}`;
     } catch (error) {
         console.error(`Error al cargar productos desde ${url}:`, error);
     }

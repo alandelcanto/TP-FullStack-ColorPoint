@@ -13,12 +13,18 @@ export const get = async (id) => {
     })
 };
 
-export const getAll = async () => {
+export const getAll = async ({ limit, offset }) => {
     return sequelize.transaction(async (t) => {
-        return await Comprobante.findAll({
+        return await Comprobante.findAndCountAll({
+            limit: limit,
+            offset: offset,
         include: {
             model: DetalleComprobante,
             as: "detallecomprobantes",
+            include: {
+                model: models.Producto,
+                as: "producto",
+            },
         },
         transaction: t,
     });

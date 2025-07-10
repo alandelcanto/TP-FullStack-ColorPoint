@@ -1,0 +1,31 @@
+.paginacion {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.paginacion a{
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    background-color: #0080ff;
+    color: white;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.paginacion a:hover {
+    background-color: #005bb5;
+}
+
+.paginacion a.activo {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    background-color: #004181;
+    color: white;
+    border-style: solid;
+    border-color: #0080ff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}

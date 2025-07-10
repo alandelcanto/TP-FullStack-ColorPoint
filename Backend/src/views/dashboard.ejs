@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+
+    <link rel="stylesheet" href="/css/paginacion.css" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+</head>
+
+<body>
+
+    <%- include('./partials/header') %>
+        <%- include('./partials/navbar') %>
+            <h1>Dashboard</h1>
+
+            <div class="dashboard-filtros">
+                <% const pinturaQuery=new URLSearchParams(query); pinturaQuery.set("tipo", "pintura" ) ;
+                    pinturaQuery.set("offset", 0); %>
+                    <a href="?<%= pinturaQuery.toString() %>">Pinturas</a>
+                    <% const herramientaQuery=new URLSearchParams(query); herramientaQuery.set("tipo", "herramienta" );
+                        herramientaQuery.set("offset", 0); %>
+                        <a href="?<%= herramientaQuery.toString() %>">Herramientas</a>
+            </div>
+
+            <div class="dashboard-cards">
+                <% productos.forEach(producto=> { %>
+                    <div class="dashboard-card"><img src="<%= producto.img %>">
+                        <h3>
+                            <%= producto.nombre %>
+                        </h3>
+                        <p>$<%= producto.precio %>
+                        </p>
+                        <button class="modificar-producto botones-accion"
+                            data-id="<%= producto.id %>">Modificar</button>
+                        <button class="activar-producto hidden activar-desactivar-producto botones-accion"
+                            data-id="<%= producto.id %>" data-activo="<%= producto.activo %>">Activar</button>
+                        <button class="desactivar-producto activar-desactivar-producto botones-accion"
+                            data-id="<%= producto.id %>" data-activo="<%= producto.activo %>">Desactivar</button>
+                    </div>
+
+                    <% }) %>
+            </div>
+
+            <% const paginas=Math.ceil(cantidad / 10); %>
+
+                <div class="paginacion">
+                    <% for (let i=0; i < paginas; i++) { %>
+                        <% query.offset=i * 10; const queryString=new URLSearchParams(query).toString(); %>
+                            <a href="?<%= queryString %>">
+                                <%= i + 1 %>
+                            </a>
+                            <% } %>
+                </div>
+                <script src="/js/dashboard.js" type="module"></script>
+</body>
+
+</html>

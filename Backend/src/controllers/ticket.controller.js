@@ -31,7 +31,13 @@ export const get = async (req, res) => {
 
 export const getAll = async (req, res) => {
     try {
-        const comprobantes = await getAllService();
+        let { limit, offset } = req.query;
+        limit = +limit;
+        offset = +offset;
+        if (!limit) limit = 10;
+        if (!offset) offset = 0;
+
+        const comprobantes = await getAllService({ limit, offset });
         return res
             .status(200)
             .json({ message: "Todos los comprobantes obtenidos", payload: comprobantes });

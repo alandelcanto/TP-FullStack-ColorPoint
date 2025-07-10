@@ -95,7 +95,7 @@ async function renderizarCarrito() {
         const item = document.createElement("div");
         item.className = "item-carrito";
         item.innerHTML = `
-	  <img src="${image}" alt="${producto.nombre}">
+	  <img src="${urlBackend}/${image}" alt="${producto.nombre}">
 	  <div class="nombre">${producto.nombre}</div>
 	  <div class="precio">
 		$${producto.precio} x ${producto.cantidad} = <strong>$${
