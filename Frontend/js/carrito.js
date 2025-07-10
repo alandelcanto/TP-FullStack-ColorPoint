@@ -39,7 +39,6 @@ function quitarUnidad(id) {
         .filter((p) => p.cantidad > 0);
 
     guardarCarrito(carrito);
-    renderizarCarrito();
 }
 
 // Sumar una unidad
@@ -52,14 +51,12 @@ function sumarUnidad(id) {
     });
 
     guardarCarrito(carrito);
-    renderizarCarrito();
 }
 
 // Eliminar completamente un producto
 function eliminarProducto(id) {
     const carrito = obtenerCarrito().filter((p) => p.id != id);
     guardarCarrito(carrito);
-    renderizarCarrito();
 }
 
 async function cargarImagen(id) {
@@ -98,22 +95,22 @@ async function renderizarCarrito() {
         const item = document.createElement("div");
         item.className = "item-carrito";
         item.innerHTML = `
-      <img src="${image}" alt="${producto.nombre}">
-      <div class="nombre">${producto.nombre}</div>
-      <div class="precio">
-        $${producto.precio} x ${producto.cantidad} = <strong>$${
+	  <img src="${image}" alt="${producto.nombre}">
+	  <div class="nombre">${producto.nombre}</div>
+	  <div class="precio">
+		$${producto.precio} x ${producto.cantidad} = <strong>$${
             producto.precio * producto.cantidad
         }</strong>
-      </div>
-      <div class="acciones">
-        <button data-action="restar" data-id="${producto.id}">-</button>
-        <span>${producto.cantidad}</span>
-        <button data-action="sumar" data-id="${producto.id}">+</button>
-        <button data-action="eliminar" data-id="${
+	  </div>
+	  <div class="acciones">
+		<button data-action="restar" data-id="${producto.id}">-</button>
+		<span>${producto.cantidad}</span>
+		<button data-action="sumar" data-id="${producto.id}">+</button>
+		<button data-action="eliminar" data-id="${
             producto.id
         }" class="eliminar">Eliminar</button>
-      </div>
-    `;
+	  </div>
+	`;
         contenedor.appendChild(item);
     });
 
@@ -145,10 +142,13 @@ document.addEventListener("click", (e) => {
 
     if (action === "sumar") {
         sumarUnidad(id);
+        renderizarCarrito();
     } else if (action === "restar") {
         quitarUnidad(id);
+        renderizarCarrito();
     } else if (action === "eliminar") {
         eliminarProducto(id);
+        renderizarCarrito();
     }
 });
 
@@ -180,45 +180,50 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Guardar el ticket en localStorage
-            const ticket = {
-                fecha: new Date().toLocaleString(),
-                items: carrito,
-                total: carrito.reduce(
-                    (acc, p) => acc + p.precio * p.cantidad,
-                    0
-                ),
-            };
-            localStorage.setItem("colorpoint-ticket", JSON.stringify(ticket));
+            if (confirm("¿Estás seguro de finalizar la compra?")) {
+                // Guardar el ticket en localStorage
+                const ticket = {
+                    fecha: new Date().toLocaleString(),
+                    items: carrito,
+                    total: carrito.reduce(
+                        (acc, p) => acc + p.precio * p.cantidad,
+                        0
+                    ),
+                };
+                localStorage.setItem(
+                    "colorpoint-ticket",
+                    JSON.stringify(ticket)
+                );
 
-            // Vaciar el carrito después de guardar el ticket
-            localStorage.removeItem(CARRITO_KEY);
+                // Vaciar el carrito después de guardar el ticket
+                localStorage.removeItem(CARRITO_KEY);
 
-            fetch(`${urlBackend}/api/comprobantes`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    nombre_cliente: sessionStorage.getItem("nombreCliente"),
-                    fecha: ticket.fecha,
-                    total: ticket.total,
-                    detalleComprobante: ticket.items.map((p) => ({
-                        producto_id: p.id,
-                        cantidad: p.cantidad,
-                        precio_unidad: p.precio,
-                        precio_subtotal: p.precio * p.cantidad,
-                    })),
-                }),
-            })
-                .then((response) => response.json())
-                .then((data) => localStorage.setItem("idTicket", data.payload.id))
-                .catch((error) => console.error(error));
+                fetch(`${urlBackend}/api/comprobantes`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        nombre_cliente: sessionStorage.getItem("nombreCliente"),
+                        fecha: ticket.fecha,
+                        total: ticket.total,
+                        detalleComprobante: ticket.items.map((p) => ({
+                            producto_id: p.id,
+                            cantidad: p.cantidad,
+                            precio_unidad: p.precio,
+                            precio_subtotal: p.precio * p.cantidad,
+                        })),
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        localStorage.setItem("idTicket", data.payload.id);
+                        console.log("[finalizar] Ticket guardado:", ticket);
+                        window.location.href = "ticket.html";
+                    })
 
-            console.log("[finalizar] Ticket guardado:", ticket);
-
-            // Redirigir
-            window.location.href = "ticket.html";
+                    .catch((error) => console.error(error));
+            }
         });
     }
 });

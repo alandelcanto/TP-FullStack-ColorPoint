@@ -1,5 +1,3 @@
-
-
 let offset = 0;
 let search = "";
 let productos = [];
@@ -10,13 +8,12 @@ let colorActual = "reset";
 async function cargarProductos() {
     const busquedaInput = document.getElementById("busquedaGlobal");
     if (busquedaInput) {
-      if (search !== busquedaInput.value) {
-        offset = 0;
-        search = busquedaInput.value;
-      }
+        if (search !== busquedaInput.value) {
+            offset = 0;
+            search = busquedaInput.value;
+        }
     }
 
-    
     const busquedaColor = colorActual === "reset" ? "" : colorActual;
 
     const params = {
@@ -74,7 +71,8 @@ function mostrarProductos(lista) {
     }
 
     lista.forEach(async (producto) => {
-
+        const cantidad =
+            obtenerCarrito().map((p) => p.id === producto.id).cantidad || 0;
         const image = await cargarImagen(producto.img);
         const div = document.createElement("div");
         div.className = "product-card";
@@ -82,7 +80,9 @@ function mostrarProductos(lista) {
       <img src="${image}" alt="${producto.nombre}">
       <h3>${producto.nombre}</h3>
       <p>$${producto.precio}</p>
-      <button class="add-to-cart" data-id="${producto.id}">Agregar al carrito</button>
+      <button class="add-to-cart add-product" data-id="${producto.id}">Agregar al carrito</button>
+      <p class="hidden cart-buttons label-cantidad" product-id="${producto.id}">${cantidad}</p>
+      <button class="add-to-cart remove-product hidden cart-buttons" product-id="${producto.id}">Quitar del carrito</button>
     `;
         div.dataset.producto = JSON.stringify(producto);
         contenedor.appendChild(div);
@@ -120,7 +120,9 @@ function configurarTabs() {
 
 async function cargarColores() {
     try {
-        const response = await fetch(`${urlBackend}/api/productos/search/colors`);
+        const response = await fetch(
+            `${urlBackend}/api/productos/search/colors`
+        );
         const coloresRaw = await response.json();
         return coloresRaw.payload;
     } catch (error) {
@@ -137,7 +139,7 @@ async function configurarFiltrosPinturas() {
     let coloresRaw = await cargarColores();
 
     const colores = coloresRaw.map((color) => color.color_material);
-    
+
     console.log(`-> Colores de pinturas encontrados: ${colores}`);
 
     // Agregar botón Reset
@@ -202,7 +204,7 @@ function configurarPaginacion(count) {
             boton.id = `boton-pagina-${i * 10}`;
             if (i * 10 === offset) boton.classList.add("activo");
             boton.addEventListener("click", () => {
-                offset = (i) * 10;
+                offset = i * 10;
                 cargarProductos();
             });
             paginacion.appendChild(boton);
@@ -210,14 +212,45 @@ function configurarPaginacion(count) {
     }
 }
 
+function actualizarBotones() {
+    const botones = document.querySelectorAll(".cart-buttons");
+    botones.forEach((boton) => {
+        const producto = obtenerCarrito().find(
+            (p) => p.id == boton.getAttribute("product-id")
+        );
+        if (producto) {
+            if (boton.classList.contains("label-cantidad")) {
+                    boton.textContent = producto.cantidad;
+                }
+            if (boton.classList.contains("hidden")) {
+                boton.classList.remove("hidden");
+            }
+        } else {
+            if (!boton.classList.contains("hidden")) {
+                boton.classList.add("hidden");
+            }
+        }
+    });
+}
+
 // Evento delegado para botones de carrito
 document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("add-to-cart")) {
+    if (e.target.classList.contains("add-product")) {
         const card = e.target.closest(".product-card");
         const data = card?.dataset.producto;
         if (data) {
             const producto = JSON.parse(data);
             agregarAlCarrito(producto);
+            actualizarBotones();
+        }
+    }
+    if (e.target.classList.contains("remove-product")) {
+        const card = e.target.closest(".product-card");
+        const data = card?.dataset.producto;
+        if (data) {
+            const producto = JSON.parse(data);
+            quitarUnidad(producto.id);
+            actualizarBotones();
         }
     }
 });
@@ -225,9 +258,10 @@ document.addEventListener("click", (e) => {
 // Inicialización general
 async function init() {
     configurarTabs();
-    cargarProductos().then( async () => {
+    cargarProductos().then(async () => {
         await configurarFiltrosPinturas();
         configurarBusqueda();
+        actualizarBotones();
     });
 }
 
